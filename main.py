@@ -106,12 +106,19 @@ def bonus_analysis_one(book_list):
     for each in author_count_list:
         if each['count'] > appeared_most['count']:
             appeared_most = each
-    print(f"The author that has appeared the most in the top 50's list is {appeared_most['author']} and they appeared {appeared_most['count']} times")
-pass
+    print(f"The author that has the highest number of distinct titles in the top 50's list is {appeared_most['author']} and they have {appeared_most['count']} titles!")
 
 
 def bonus_analysis_two(book_list):
     print("Analysis of the top book for each year, based on the book's user ratings and number of reviews")
+    year = 2009
+    while year < 2020:
+        book_year_list = list(filter(lambda book: book.year == year, book_list))
+        highest_rating = max(book_year_list, key = lambda book: book.user_rating)
+        most_reviews = max(book_year_list, key = lambda book: book.number_of_reviews)
+        print(f"In {year}, '{highest_rating.name}' had the highest rating, and '{most_reviews.name}' had the most reviews.")
+        year += 1
+    pass
 
 
 def bonus_analysis_three(book_list):

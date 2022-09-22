@@ -1,3 +1,4 @@
+from itertools import count
 from data import data_list
 from book import Book
 
@@ -61,13 +62,23 @@ def analysis_two(book_list):
     if number_of_fiction_books > number_of_non_fiction_books:
         print(f"The genre that appeared most in the top 50's list is Fiction")
     else:
-        print(f"The genre that appeared most in the top 50's list is Non-Fiction")
+        print(f"The genre that appeared most in the top 50's list is Non-Fiction, appearing {len(list_of_non_fiction_books)} times")
 
 
 def analysis_three(book_list):
     print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
-
-
+    list_of_book_names = [book.name for book in book_list]
+    name_count_list = []
+    for name in list_of_book_names:
+        list_of_book_names.count(name)
+        name_count_list.append({"name": name, "count": list_of_book_names.count(name)})
+    appeared_most = name_count_list[0]
+    for each in name_count_list:
+        if each['count'] > appeared_most['count']:
+            appeared_most = each
+        else:
+            continue
+    print(f"The book that has appeared the most in the top 50's list is {appeared_most['name']} and it appeared {appeared_most['count']} times")
 # BONUS USER STORIES:
 
 

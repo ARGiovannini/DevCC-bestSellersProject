@@ -21,6 +21,18 @@ def run_analysis(book_list):
     print("*******************************************************************")
     print('')
     analysis_three(books)
+    print('')
+    print("*******************************************************************")
+    print('')
+    bonus_analysis_one(books)
+    print('')
+    print("*******************************************************************")
+    print('')
+    bonus_analysis_two(books)
+    print('')
+    print("*******************************************************************")
+    print('')
+    bonus_analysis_three(books)
 
 
 def create_book_list(data_list):
@@ -70,7 +82,6 @@ def analysis_three(book_list):
     list_of_book_names = [book.name for book in book_list]
     name_count_list = []
     for name in list_of_book_names:
-        list_of_book_names.count(name)
         name_count_list.append({"name": name, "count": list_of_book_names.count(name)})
     appeared_most = name_count_list[0]
     for each in name_count_list:
@@ -84,6 +95,19 @@ def analysis_three(book_list):
 
 def bonus_analysis_one(book_list):
     print("Analysis of which author has shown up on the top 50's list the most (Distinct books only!)")
+    name_author_dictionary = {}
+    for book in book_list:
+        name_author_dictionary.update({book.name: book.author})
+    list_of_authors = list(name_author_dictionary.values())
+    author_count_list = []
+    for author in list_of_authors:
+        author_count_list.append({"author": author, "count": list_of_authors.count(author)})
+    appeared_most = author_count_list[0]
+    for each in author_count_list:
+        if each['count'] > appeared_most['count']:
+            appeared_most = each
+    print(f"The author that has appeared the most in the top 50's list is {appeared_most['author']} and they appeared {appeared_most['count']} times")
+pass
 
 
 def bonus_analysis_two(book_list):

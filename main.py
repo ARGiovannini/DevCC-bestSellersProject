@@ -25,7 +25,10 @@ def run_analysis(book_list):
 def create_book_list(data_list):
     book_list = []
     # TODO: Write a function that will loop through data_list, and create a Book object for each list item
+    for dictionary in data_list:
+        new_book = Book(dictionary)
     # TODO: Then, add each Book item to book_list
+        book_list.append(new_book)
     # TODO: Finally, return book_list for use in analysis questions!
     return book_list
 
@@ -46,6 +49,10 @@ def example_analysis(book_list):
 
 def analysis_one(book_list):
     print("Analysis of which book had the lowest number of reviews in 2018")
+    books_2018 = list(filter(lambda book: book.year == 2018, book_list))
+    lowest_number_of_reviews = min(books_2018, key=lambda book: book.number_of_reviews)
+    print(
+        f"The book with the lowest number of reviews in 2018 was {lowest_number_of_reviews.name} with a total of {lowest_number_of_reviews.number_of_reviews} reviews")
 
 
 def analysis_two(book_list):

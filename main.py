@@ -24,12 +24,9 @@ def run_analysis(book_list):
 
 def create_book_list(data_list):
     book_list = []
-    # TODO: Write a function that will loop through data_list, and create a Book object for each list item
     for dictionary in data_list:
         new_book = Book(dictionary)
-    # TODO: Then, add each Book item to book_list
         book_list.append(new_book)
-    # TODO: Finally, return book_list for use in analysis questions!
     return book_list
 
 
@@ -57,6 +54,14 @@ def analysis_one(book_list):
 
 def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
+    list_of_fiction_books = list(filter(lambda book: book.genre == "Fiction", book_list))
+    number_of_fiction_books = len(list_of_fiction_books)
+    list_of_non_fiction_books = list(filter(lambda book: book.genre == "Non Fiction", book_list))
+    number_of_non_fiction_books = len(list_of_non_fiction_books)
+    if number_of_fiction_books > number_of_non_fiction_books:
+        print(f"The genre that appeared most in the top 50's list is Fiction")
+    else:
+        print(f"The genre that appeared most in the top 50's list is Non-Fiction")
 
 
 def analysis_three(book_list):

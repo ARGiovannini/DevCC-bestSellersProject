@@ -115,14 +115,12 @@ def bonus_analysis_two(book_list):
     while year < 2020:
         book_year_list = list(filter(lambda book: book.year == year, book_list))
         highest_rating = max(book_year_list, key = lambda book: book.user_rating)
-        most_reviews = max(book_year_list, key = lambda book: book.number_of_reviews)
-        print(f"In {year}, '{highest_rating.name}' had the highest rating, and '{most_reviews.name}' had the most reviews.")
+        highest_rating_list = list(filter(lambda book: book.user_rating == highest_rating.user_rating, book_year_list))
+        top_book = max(highest_rating_list, key = lambda book: book.number_of_reviews)
+        print(f"In {year}, '{top_book.name}' was the top book.")
         year += 1
-    pass
-
 
 def bonus_analysis_three(book_list):
     print("Analysis of which book has appeared the most consecutively on top 50's list")
-
 
 run_analysis(data_list)

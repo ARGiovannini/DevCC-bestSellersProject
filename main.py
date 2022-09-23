@@ -1,4 +1,5 @@
 from itertools import count
+from timeit import repeat
 from data import data_list
 from book import Book
 
@@ -122,5 +123,67 @@ def bonus_analysis_two(book_list):
 
 def bonus_analysis_three(book_list):
     print("Analysis of which book has appeared the most consecutively on top 50's list")
+    list_of_books_list = []
+    year = 2009
+    while year < 2020:
+        new_book_list = list(filter(lambda book: book.year == year, book_list))
+        list_of_books_list.append(new_book_list)
+        year +=1
+    a = 0
+    while a < len(list_of_books_list) - 1:
+        for book in list_of_books_list[a]:
+            b = 1
+            for second_book in list_of_books_list[a + b]:
+                if book.name == second_book.name:
+                    b += 1
+                    if a + b >= len(list_of_books_list):
+                        break
+                    for third_book in list_of_books_list[a + b]:
+                        if book.name == third_book.name:
+                            b += 1
+                            if a + b >= len(list_of_books_list):
+                                break
+                            for fourth_book in list_of_books_list[a + b]:
+                                if book.name == fourth_book.name:
+                                    b += 1
+                                    if a + b >= len(list_of_books_list):
+                                        break
+                                    for fifth_book in list_of_books_list[a + b]:
+                                        if book.name == fifth_book.name:
+                                            b += 1
+                                            if a + b >= len(list_of_books_list):
+                                                break
+                                            for sixth_book in list_of_books_list[a + b]:
+                                                if book.name == sixth_book.name:
+                                                    b += 1
+                                                    if a + b >= len(list_of_books_list):
+                                                        break
+                                                    for seventh_book in list_of_books_list[a + b]:
+                                                        if book.name == seventh_book.name:
+                                                            b += 1
+                                                            if a + b >= len(list_of_books_list):
+                                                                break
+                                                            for eigth_book in list_of_books_list[a + b]:
+                                                                if book.name == eigth_book.name:
+                                                                    b += 1
+                                                                    if a + b >= len(list_of_books_list):
+                                                                        break
+                                                                    for ninth_book in list_of_books_list[a + b]:
+                                                                        if book.name == ninth_book.name:
+                                                                            b += 1
+                                                                            if a + b >= len(list_of_books_list):
+                                                                                break
+                                                                            for tenth_book in list_of_books_list[a + b]:
+                                                                                if book.name == tenth_book.name:
+                                                                                    print(f"{book.name} has appeared the most number of times consecutively, a total of 10 years in a row")
+                                                                                    break
+
+                                                            
+                else:
+                    continue
+        a += 1
+
+            
+
 
 run_analysis(data_list)
